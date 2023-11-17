@@ -7,8 +7,8 @@ function division(a: number, b: number): number {
 
 describe('my suite test', () => {
   test('deve executar a divisão seguindo a devida ordem dos atributos', t => {
-    const resultado = division(10, 2)
     const resultadoEsperado = 5
+    const resultado = division(10, 2)
 
     assert.equal(resultado, resultadoEsperado, 'o resultado esperado deve ser 5')
   })

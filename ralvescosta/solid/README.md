@@ -1,3 +1,7 @@
++55 48 9864-3829
+
+13 991696912
+
 # Interface
   Uma interface é uma maneira de declarar o comportamento de uma classe. Nesta declaração não especificamos exatamente como acontece internamente cada comportamento. Para uma interface são declarados somente o nome do método e seus parâmetros. Esta especificação de parâmetros é feita através de seus tipos.
 

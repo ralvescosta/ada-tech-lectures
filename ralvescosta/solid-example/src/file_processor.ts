@@ -15,7 +15,7 @@ class ProcessadorDeArquivo {
         return "conteúdo";
     }
 
-    public *letLinhaPorLinha(): Generator<string> {
+    public *lerLinhaPorLinha(): Generator<string> {
         yield "1"
         yield "2"
         yield "3"
