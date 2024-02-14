@@ -27,7 +27,7 @@
   <td>Aula 2</td>
   <td>Setup e Aplicação Prática</td>
   <td>
-    TODO: ADICIONAR MAIS CONTEÚDO <br/><br />
+    @TODO: ADICIONAR MAIS CONTEÚDO <br/><br />
     Triplo A <br/><br />
     test() e expect();<br /><br />
     Introdução ao uso de matchers;<br /><br />
