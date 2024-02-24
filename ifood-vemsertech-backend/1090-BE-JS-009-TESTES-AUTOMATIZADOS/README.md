@@ -18,9 +18,15 @@
     Tipos mais comuns de teste de software (Unidade / Integração / Sistema);<br /><br />
     Metodologias de implementação (TDD / BDD);<br /><br />
     O que são testing frameworks; <br /> <br />
+      - Jest <br /> <br />
+      - Mocha <br /> <br />
     Assertion libraries; <br /> <br />
+      - Chai <br /> <br />
+      - Sinon Js <br /> <br />
     Mocking libraries; <br /> <br />
+      - Faker js  <br /> <br />
     Coverage reports; <br /> <br />
+      - Apresentar um exemplo pratico <br /> <br />
   </td>
 </tr>
 
@@ -38,6 +44,7 @@
       test(() => {
       })
     });<br /><br />
+    Fazer alguns exemplos de funções e classes e criar tests; <br /><br />
   </td>
 </tr>
 
