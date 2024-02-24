@@ -1,0 +1,3 @@
+- yarn add -D typescript ts-node nodemon
+- yarn add -D jest ts-jest @types/jest
+- yarn jest --init
