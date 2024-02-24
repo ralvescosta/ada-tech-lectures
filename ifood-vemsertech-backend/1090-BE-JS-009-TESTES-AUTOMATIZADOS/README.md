@@ -17,9 +17,10 @@
     Vantagens ao adotar testes automatizados;<br /><br />
     Tipos mais comuns de teste de software (Unidade / Integração / Sistema);<br /><br />
     Metodologias de implementação (TDD / BDD);<br /><br />
-    O que são testing frameworks, assertion libraries, mocking libraries; e coverage reports
-    <br /><br />
-    Configurar e executar seu primeiro teste.
+    O que são testing frameworks; <br /> <br />
+    Assertion libraries; <br /> <br />
+    Mocking libraries; <br /> <br />
+    Coverage reports; <br /> <br />
   </td>
 </tr>
 
@@ -27,7 +28,8 @@
   <td>Aula 2</td>
   <td>Setup e Aplicação Prática</td>
   <td>
-    @TODO: ADICIONAR MAIS CONTEÚDO <br/><br />
+    Apresentar a biblioteca Jest <br/><br />
+    Configurar um projeto Typescript com Jest <br /><br />
     Triplo A <br/><br />
     test() e expect();<br /><br />
     Introdução ao uso de matchers;<br /><br />
@@ -106,9 +108,15 @@
 
 <tr>
   <td>Aula 8</td>
-  <td>@TODO: NOME DA AULA</td>
+  <td>Utilizando tests para garantir a qualidade do software</td>
   <td>
-    @TODO: CONTEÚDO DA AULA;<br /><br />
+    O que é pipeline;<br /><br />
+    O que é um arquivo Yaml; <br /><br />
+    O que é Github Actions;<br /><br />
+    Como configurar uma Github Actions;<br /><br />
+    Configurando nossa primeira Hello World Action;<br /><br />
+    Configurado nossa action para executar nossos tests automatizados;<br /><br />
+    Configurando proteção de branch no Github para bloquear merges em caso de falha;<br /><br />
   </td>
 </tr>
 
