@@ -52,10 +52,9 @@
   <td>Aula 3</td>
   <td>Escrever testes com a metodologia TDD (parte 1)</td>
   <td>
-    Implementar sua primeira biblioteca (myLibMath);<br /><br /> (add, subtract, pow, multiply, sqrt)
+    Implementar projeto: Biblioteca<br /><br /> (registrar livro, alugar livros, )
     Aplicar a metodologia TDD utilizando o conceito RGR (Red / Green / Refactor);<br /><br />
     Escrever os primeiros casos de teste (antes de implementar);<br /><br />
-    Implementar os primeiros métodos da biblioteca;<br /><br />
     Adicionar novos casos de testes;<br /><br />
     Refatorar a implementação (até os testes passarem). <br /><br />
     Descubra o que falta ser testado (ativando o code coverage).
@@ -66,7 +65,7 @@
   <td>Aula 4</td>
   <td>Escrever testes com a metodologia TDD (parte 2) e Tests para códigos Assíncronos</td>
   <td>
-    Configurar Express para possibilitar a conversão da myLibMath para uma API HTTP;<br /><br />
+    Configurar Express para possibilitar a conversão da Biblioteca para uma API HTTP;<br /><br />
     Apresentar SuperTest<br /><br />
     Configurar SuperTest no projeto;<br /><br />
     O que são códigos assíncronos?;<br /><br />
