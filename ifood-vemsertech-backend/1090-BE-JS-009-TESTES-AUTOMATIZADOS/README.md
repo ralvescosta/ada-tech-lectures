@@ -34,6 +34,7 @@
   <td>Aula 2</td>
   <td>Setup e Aplicação Prática</td>
   <td>
+    Dicas <br/><br />
     Apresentar a biblioteca Jest <br/><br />
     Configurar um projeto Typescript com Jest <br /><br />
     Triplo A <br/><br />
