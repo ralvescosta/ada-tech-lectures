@@ -1,18 +1,47 @@
 import { Router } from "express"
-import { PersonsRepository } from "./repositories/persons"
-import { PersonsService } from "./services/persons"
-import { PersonsController } from "./controllers/persons"
-import { PersonsRoutes } from "./routes/persons"
+import { CreateBooksController } from "./controllers/books/create"
+import { ReadBooksController } from "./controllers/books/read"
+import { UpdateBooksController } from "./controllers/books/update"
+import { DeleteBooksController } from "./controllers/books/delete"
+import { CreateUsersController } from "./controllers/users/create"
+import { ReadUsersController } from "./controllers/users/read"
+import { CreateBooksRentalController } from "./controllers/books_rental/create"
+import { ReadBooksRentalController } from "./controllers/books_rental/read"
+import { UpdateBooksRentalController } from "./controllers/books_rental/update"
+import { DeleteBooksRentalController } from "./controllers/books_rental/delete"
 
-export const Routes = () => {
-  const personsRepository = new PersonsRepository()
-  const personsService = new PersonsService(personsRepository)
+type Args = {
+  createBooksController: CreateBooksController,
+  readBooksController: ReadBooksController,
+  updateBooksController: UpdateBooksController
+  deleteBooksController: DeleteBooksController,
 
-  const personsController = new PersonsController(personsService)
-  
-  const personsRoutes = PersonsRoutes(personsController)
+ createUsersController: CreateUsersController,
+ readUsersController: ReadUsersController,
 
-  return {
-    personsRoutes
-  }
+ createBooksRentalController: CreateBooksRentalController,
+ readBooksRentalController: ReadBooksRentalController,
+ updateBooksRentalController: UpdateBooksRentalController,
+ deleteBooksRentalController: DeleteBooksRentalController
+}
+
+export const Routes = (args: Args) => {
+  const routes = Router()
+
+  routes.post('/v1/books', args.createBooksController.create.bind(args.createBooksController))
+  routes.get('/v1/books', args.readBooksController.list.bind(args.readBooksController))
+  routes.get('/v1/books/{id}', args.readBooksController.getById.bind(args.readBooksController))
+  routes.put('/v1/books/{id}', args.updateBooksController.update.bind(args.updateBooksController))
+  routes.delete('/v1/books/{id}', args.deleteBooksController.delete.bind(args.deleteBooksController))
+
+  routes.post('/v1/users', args.createUsersController.create.bind(args.createUsersController))
+  routes.get('/v1/users/{id}', args.readUsersController.getById.bind(args.readUsersController))
+
+  routes.post('/v1/rental/books', args.createBooksRentalController.create.bind(args.createBooksRentalController))
+  routes.get('/v1/rental/books', args.readBooksRentalController.list.bind(args.readBooksRentalController))
+  routes.get('/v1/rental/books/{id}', args.readBooksRentalController.getById.bind(args.readBooksRentalController))
+  routes.put('/v1/rental/books/{id}', args.updateBooksRentalController.update.bind(args.updateBooksRentalController))
+  routes.delete('/v1/rental/books/{id}', args.deleteBooksRentalController.delete.bind(args.deleteBooksRentalController))
+
+  return routes
 }
