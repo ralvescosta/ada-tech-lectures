@@ -1,13 +1,22 @@
 import { NewCar, Car } from "../models/cars";
 import { CarsModel } from '../db/models/cars'
+import { ICarRepository } from "./interfaces";
+import {Request, Response} from 'express'
 
 class CreateCarController {
-  constructor() {}
+  constructor(private readonly carRepository: ICarRepository) {}
 
-  public async create(newCar: NewCar): Promise<Car> {
-    let car = await CarsModel.create(newCar)
+  public async create(req: Request<any, any, NewCar>, res: Response) {
+    const newCar = req.body;
 
-    return {} as any
+    const carWithTheSameName = await this.carRepository.findByName(newCar.name)
+    if(carWithTheSameName) {
+      return res.status(409).json({ message: 'car with the provided name already created' })
+    }
+
+    const car = await this.carRepository.create(newCar)
+
+    return res.status(201).json(car)
   }
 }
 
