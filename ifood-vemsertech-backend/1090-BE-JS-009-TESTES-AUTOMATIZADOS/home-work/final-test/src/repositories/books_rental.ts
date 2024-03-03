@@ -3,15 +3,25 @@ import { BooksRental, NewBooksRental } from '../controllers/models';
 import { BooksModel } from '../db/models/Books';
 import { BooksRentalModel } from '../db/models/BooksRental'
 import { UsersModel } from '../db/models/Users';
+import { v4 } from 'uuid'
 
 export class BooksRentalRepository implements IBooksRentalRepository {
   public async create(newBookRental: NewBooksRental): Promise<BooksRental> {
-    const bookRental = await BooksRentalModel.create(newBookRental);
+    const id = v4()
+    const bookRental = await BooksRentalModel.create({id, ...newBookRental});
     return bookRental.dataValues
   }
 
   public async getById(id: string): Promise<BooksRental> {
     const bookRenal = await BooksRentalModel.findOne({ where: { id } })
+    if(bookRenal)
+      return undefined
+
+    return bookRenal.dataValues
+  }
+
+  public async getByBookId(book_id: string): Promise<BooksRental | undefined> {
+    const bookRenal = await BooksRentalModel.findOne({ where: { book_id } })
     if(bookRenal)
       return undefined
 

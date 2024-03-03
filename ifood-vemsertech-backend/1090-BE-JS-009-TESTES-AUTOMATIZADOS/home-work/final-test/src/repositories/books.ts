@@ -1,10 +1,12 @@
 import { IBooksRepository } from '../controllers/interfaces';
 import { Book, NewBook } from '../controllers/models';
 import { BooksModel } from '../db/models/Books'
+import { v4 } from 'uuid'
 
 export class BooksRepository implements IBooksRepository {
   public async create(newBook: NewBook): Promise<Book> {
-    const book = await BooksModel.create(newBook)
+    const id = v4()
+    const book = await BooksModel.create({id, ...newBook})
     return book.dataValues
   }
 

@@ -1,11 +1,11 @@
+import { IUsersRepository } from "../interfaces";
 import { Request, Response } from "express";
-import { IBooksRentalRepository } from "../interfaces";
 import { Logger } from "winston";
 
-export class UpdateBooksRentalController {
+export class UpdateUsersController {
   constructor(
     private readonly logger: Logger,
-    private readonly booksRentalRepository: IBooksRentalRepository
+    private readonly usersRepository: IUsersRepository
   ) {}
 
   public async update(req: Request, res: Response): Promise<void> {

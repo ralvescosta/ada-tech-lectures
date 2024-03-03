@@ -1,11 +1,25 @@
 import { IUsersRepository } from "../interfaces";
 import { Request, Response } from "express";
+import { Logger } from "winston";
 
 export class ReadUsersController {
-  constructor(private readonly usersRepository: IUsersRepository) {}
+  constructor(
+    private readonly logger: Logger,
+    private readonly usersRepository: IUsersRepository
+  ) {}
 
   public async getById(req: Request, res: Response): Promise<void> {
-    res.status(200).send()
+    const { id } = req.params
+
+    try {
+      const user = await this.usersRepository.getById(id)
+      res.status(200).json(user)
+      return
+    }catch(err){ 
+      this.logger.error({ message: 'error to read user', error: err })
+      res.status(500).json({ message: 'something went wrong, try again latter!' })
+      return
+    }
   }
 
   public async list(req: Request, res: Response): Promise<void> {

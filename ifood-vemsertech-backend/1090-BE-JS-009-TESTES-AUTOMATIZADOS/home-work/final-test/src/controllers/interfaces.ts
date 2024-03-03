@@ -3,6 +3,7 @@ import { Book, BooksRental, NewBook, NewBooksRental, NewUser, User } from "./mod
 export interface IUsersRepository {
   create(newUser: NewUser): Promise<User>
   getById(id: string): Promise<User | undefined>
+  getByEmail(email: string): Promise<User | undefined>
 }
 
 export interface IBooksRepository {
@@ -17,6 +18,7 @@ export interface IBooksRepository {
 export interface IBooksRentalRepository {
   create(newBookRental: NewBooksRental): Promise<BooksRental>
   getById(id: string): Promise<BooksRental | undefined>
+  getByBookId(id: string): Promise<BooksRental | undefined>
   list(): Promise<BooksRental[]>
   delete(id: string): Promise<void>
 }

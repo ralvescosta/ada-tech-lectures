@@ -1,14 +1,36 @@
 import { IBooksRepository } from "../interfaces";
 import { Request, Response } from "express";
+import { Logger } from "winston";
 
 export class ReadBooksController {
-  constructor(private readonly booksRepository: IBooksRepository) {}
+  constructor(
+    private readonly logger: Logger,
+    private readonly booksRepository: IBooksRepository
+  ) {}
 
   public async getById(req: Request, res: Response): Promise<void> {
-    res.status(200).send()
+    const { id } = req.params
+
+    try {
+      const book = await this.booksRepository.getById(id)
+      res.status(200).json(book)
+      return
+    }catch(err){ 
+      this.logger.error({ message: 'error to read book', error: err })
+      res.status(500).json({ message: 'something went wrong, try again latter!' })
+      return
+    }
   }
 
   public async list(req: Request, res: Response): Promise<void> {
-    res.status(200).send()
+    try {
+      const book = await this.booksRepository.list()
+      res.status(200).json(book)
+      return
+    }catch(err){ 
+      this.logger.error({ message: 'error to read book', error: err })
+      res.status(500).json({ message: 'something went wrong, try again latter!' })
+      return
+    }
   }
 }
