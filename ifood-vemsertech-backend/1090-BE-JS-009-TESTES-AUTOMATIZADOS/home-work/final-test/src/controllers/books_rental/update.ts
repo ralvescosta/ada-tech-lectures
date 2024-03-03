@@ -9,6 +9,6 @@ export class UpdateBooksRentalController {
   ) {}
 
   public async update(req: Request, res: Response): Promise<void> {
-    res.status(200).send()
+    res.status(501).json({ message: 'not implemented yet!' })
   }
 }

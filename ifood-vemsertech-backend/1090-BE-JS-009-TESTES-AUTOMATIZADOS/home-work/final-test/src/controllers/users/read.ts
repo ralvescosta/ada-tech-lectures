@@ -13,7 +13,12 @@ export class ReadUsersController {
 
     try {
       const user = await this.usersRepository.getById(id)
-      res.status(200).json(user)
+
+      if(user)
+        res.status(200).json(user)
+      else
+        res.status(204).send()
+
       return
     }catch(err){ 
       this.logger.error({ message: 'error to read user', error: err })

@@ -9,6 +9,6 @@ export class UpdateUsersController {
   ) {}
 
   public async update(req: Request, res: Response): Promise<void> {
-    res.status(200).send()
+    res.status(501).send({ message: 'not implemented yet!' })
   }
 }

@@ -14,7 +14,8 @@ export class UpdateBooksController {
     const body = req.body
 
     try {
-      const book = await this.booksRepository.update(id, body)
+      await this.booksRepository.update(id, body)
+      const book = await this.booksRepository.getById(id)
       res.status(200).json(book)
       return
     }catch(err){ 

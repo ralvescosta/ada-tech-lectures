@@ -1,8 +1,21 @@
-import { DataTypes, Model, Optional } from "sequelize";
+import { Association, DataTypes, HasManyGetAssociationsMixin, Model, Optional } from "sequelize";
 import { sequelize } from "../sequelize";
-import { BooksRental } from "../../controllers/models";
+import { BooksRental, User } from "../../controllers/models";
+import { UsersModel } from "./Users";
+import { BooksModel } from "./Books";
 
-class BooksRentalModel extends Model<BooksRental, Optional<BooksRental, 'book' | 'user'>> {}
+class BooksRentalModel extends Model<BooksRental, Optional<BooksRental, 'book' | 'user'>> {
+  public getBook!: HasManyGetAssociationsMixin<BooksModel>
+  public booksRentalModelBooks!: BooksModel
+
+  public getUser!: HasManyGetAssociationsMixin<UsersModel>
+  public booksRentalModelUsers!: UsersModel
+
+   public static associations: {
+    booksRentalModelBooks: Association<BooksModel>,
+    booksRentalModelUsers: Association<UsersModel>
+  }
+}
 
 BooksRentalModel.init(
   {
@@ -32,5 +45,17 @@ BooksRentalModel.init(
     sequelize: sequelize,
   }
 )
+
+BooksRentalModel.belongsTo(BooksModel, {
+  foreignKey: 'book_id',
+  targetKey: "id",
+  as: 'booksRentalModelBooks'
+})
+
+BooksRentalModel.belongsTo(UsersModel, {
+  foreignKey: 'user_id',
+  targetKey: "id",
+  as: 'booksRentalModelUsers'
+})
 
 export { BooksRentalModel };

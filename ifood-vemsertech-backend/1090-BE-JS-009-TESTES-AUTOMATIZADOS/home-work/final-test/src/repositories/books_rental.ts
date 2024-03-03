@@ -13,19 +13,63 @@ export class BooksRentalRepository implements IBooksRentalRepository {
   }
 
   public async getById(id: string): Promise<BooksRental> {
-    const bookRenal = await BooksRentalModel.findOne({ where: { id } })
-    if(bookRenal)
+    const bookRental = await BooksRentalModel.findOne(
+      { 
+        where: { id },
+        include: [
+          {
+            model: UsersModel,
+            as: "booksRentalModelUsers"
+          },
+          {
+            model: BooksModel,
+            as: "booksRentalModelBooks",
+          }
+        ]
+      }
+    )
+    if(!bookRental)
       return undefined
 
-    return bookRenal.dataValues
+    return {
+      id: bookRental.dataValues.id,
+      book_id: bookRental.dataValues.book_id,
+      book: bookRental.booksRentalModelBooks.dataValues,
+      user_id: bookRental.dataValues.user_id,
+      user: bookRental.booksRentalModelUsers.dataValues,
+      rental_time: bookRental.dataValues.rental_time,
+      rented_at: bookRental.dataValues.rented_at,
+    }
   }
 
   public async getByBookId(book_id: string): Promise<BooksRental | undefined> {
-    const bookRenal = await BooksRentalModel.findOne({ where: { book_id } })
-    if(bookRenal)
+    const bookRental = await BooksRentalModel.findOne(
+      { 
+        where: { book_id },
+        include: [
+          {
+            model: UsersModel,
+            as: "booksRentalModelUsers"
+          },
+          {
+            model: BooksModel,
+            as: "booksRentalModelBooks",
+          }
+        ]
+      },
+    )
+    if(!bookRental)
       return undefined
 
-    return bookRenal.dataValues
+    return {
+      id: bookRental.dataValues.id,
+      book_id: bookRental.dataValues.book_id,
+      book: bookRental.booksRentalModelBooks.dataValues,
+      user_id: bookRental.dataValues.user_id,
+      user: bookRental.booksRentalModelUsers.dataValues,
+      rental_time: bookRental.dataValues.rental_time,
+      rented_at: bookRental.dataValues.rented_at,
+    }
   }
 
   public async list(): Promise<BooksRental[]> {
@@ -33,11 +77,11 @@ export class BooksRentalRepository implements IBooksRentalRepository {
       include: [
         {
           model: UsersModel,
-          as: "userBooksRental"
+          as: "booksRentalModelUsers"
         },
         {
           model: BooksModel,
-          as: "bookBooksRental",
+          as: "booksRentalModelBooks",
         }
       ]
     })
@@ -45,9 +89,9 @@ export class BooksRentalRepository implements IBooksRentalRepository {
     return booksRentals.map(bookRental => ({
       id: bookRental.dataValues.id,
       book_id: bookRental.dataValues.book_id,
-      book: bookRental.dataValues.book,
+      book: bookRental.booksRentalModelBooks.dataValues,
       user_id: bookRental.dataValues.user_id,
-      user: bookRental.dataValues.user,
+      user: bookRental.booksRentalModelUsers.dataValues,
       rental_time: bookRental.dataValues.rental_time,
       rented_at: bookRental.dataValues.rented_at,
     }))

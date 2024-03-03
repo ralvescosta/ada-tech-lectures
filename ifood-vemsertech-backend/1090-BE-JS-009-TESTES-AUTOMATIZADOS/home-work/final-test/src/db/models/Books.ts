@@ -38,9 +38,4 @@ BooksModel.init(
   }
 )
 
-BooksModel.hasMany(BooksRentalModel, {
-  foreignKey: 'book_id',
-  as: "bookBooksRental"
-})
-
 export { BooksModel };

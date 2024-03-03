@@ -13,7 +13,12 @@ export class ReadBooksController {
 
     try {
       const book = await this.booksRepository.getById(id)
-      res.status(200).json(book)
+
+      if(book)
+        res.status(200).json(book)
+      else
+        res.status(204).send()
+
       return
     }catch(err){ 
       this.logger.error({ message: 'error to read book', error: err })
