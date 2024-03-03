@@ -46,6 +46,10 @@ No README.md do projeto voces encontraram as intrujões para poderem conseguir c
 
 ## HTTP API Endpoints
 
+<details>
+
+<summary>Books Endpoints</summary>
+
 ### POST /v1/books
 
 **Criar uma Nova Entrada de Livro**
@@ -148,7 +152,7 @@ Este endpoint permite atualizar os detalhes de um livro específico no sistema u
 - Cabeçalhos
   - Content-Type: application/json
 
-**Carga Útil (Payload)**
+**Payload**
 
 O corpo da requisição deve ser um objeto JSON contendo um ou mais dos seguintes campos que deseja atualizar:
 
@@ -199,3 +203,18 @@ Para excluir o livro com o ID 6de35865-9584-4c2e-bb30-65be53e62907, utilize a se
 ```curl
 curl --location --request DELETE 'localhost:3000/v1/books/6de35865-9584-4c2e-bb30-65be53e62907'
 ```
+
+</details>
+
+<details>
+
+<summary>Users Endpoints</summary>
+
+</details>
+
+
+<details>
+
+<summary>Books Rental Endpoints</summary>
+
+</details>
