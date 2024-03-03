@@ -12,6 +12,12 @@ export class DeleteBooksRentalController {
     const { id } = req.params
 
     try {
+      const booksRental = await this.booksRentalRepository.getById(id)
+      if(!booksRental){
+        res.status(409).json({ message: 'any book rental with the id provided was founded' })
+        return
+      }
+
       await this.booksRentalRepository.delete(id)
       res.status(200).send()
       return

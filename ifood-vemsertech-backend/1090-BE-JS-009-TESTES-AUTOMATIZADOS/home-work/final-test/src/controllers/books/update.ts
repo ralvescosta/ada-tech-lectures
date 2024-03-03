@@ -14,9 +14,15 @@ export class UpdateBooksController {
     const body = req.body
 
     try {
-      await this.booksRepository.update(id, body)
       const book = await this.booksRepository.getById(id)
-      res.status(200).json(book)
+      if(!book){
+        res.status(409).json({ message: 'any book with the id provided was founded' })
+        return
+      }
+
+      await this.booksRepository.update(id, body)
+
+      res.status(200).json({...body, ...book})
       return
     }catch(err){ 
       this.logger.error({ message: 'error to update book', error: err })
