@@ -42,7 +42,7 @@ describe('CreateBooksRentalController', () => {
     jest.clearAllMocks()
   })
 
-  it('should create book rental with there is no other rental with the same title', async () => {
+  it('should create book rental if there is no other rental with the same book id', async () => {
     const { controller, newBooksRentalMock, booksRentalMock, requestMock, responseMock } = makeSut()
     jest.spyOn(booksRentalRepositoryMock, 'getByBookId').mockResolvedValueOnce(undefined)
     jest.spyOn(booksRentalRepositoryMock, 'create').mockResolvedValueOnce(booksRentalMock)

@@ -47,9 +47,11 @@ describe('ReadBooksController', ()=> {
     jest.clearAllMocks()
   })
 
-  it.todo('should update and return user if the user was funded')
+  it.todo('should update and return user if the user was funded and if there is no other user with the same email')
 
-  it.todo('should return 404 statusCode and not update the book rental if there is no rental with the id provided')
+  it.todo('should return 404 statusCode and not update the user if there is no user with the id provided')
+
+  it.todo('should return 409 statusCode and not update the user if there is an user with the same email')
 
   it.todo('should return 500 if some error occur')
 })

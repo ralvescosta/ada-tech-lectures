@@ -40,7 +40,7 @@ describe('CreateUsersController', () => {
     jest.clearAllMocks()
   })
 
-  it('should create user with there is no other user with the same email', async () => {
+  it('should create user if there is no other user with the same email', async () => {
     const { controller, newUserMock, userMock, requestMock, responseMock } = makeSut()
     jest.spyOn(usersRepositoryMock, 'getByEmail').mockResolvedValueOnce(undefined)
     jest.spyOn(usersRepositoryMock, 'create').mockRejectedValueOnce(userMock)

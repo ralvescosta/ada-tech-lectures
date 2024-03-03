@@ -47,9 +47,11 @@ describe('UpdateBooksRentalController', ()=> {
     jest.clearAllMocks()
   })
 
-  it.todo('should update and return book rental if the book was funded')
+  it.todo('should update and return book rental if the book rental exist')
 
   it.todo('should return 404 statusCode and not update the book rental if there is no rental with the id provided')
+
+  it.todo('should return 409 statusCode and not update the book rental if there is a rental with the same book id')
 
   it.todo('should return 500 if some error occur')
 })

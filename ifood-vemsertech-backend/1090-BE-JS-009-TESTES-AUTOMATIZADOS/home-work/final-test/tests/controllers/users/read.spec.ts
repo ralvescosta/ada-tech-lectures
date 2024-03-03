@@ -45,7 +45,7 @@ describe('ReadUsersController', ()=> {
   })
 
   describe('getById', () => {
-    it('should return user with the user was funded', async () => {
+    it('should return user if the user exist', async () => {
       const { controller, newUserMock, userMock, requestMock, responseMock } = makeSut()
       jest.spyOn(usersRepositoryMock, 'getById').mockResolvedValueOnce(userMock)
 

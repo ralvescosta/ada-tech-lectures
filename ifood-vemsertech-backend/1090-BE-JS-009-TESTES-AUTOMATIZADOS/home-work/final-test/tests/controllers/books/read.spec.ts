@@ -48,7 +48,7 @@ describe('ReadBooksController', ()=> {
   })
 
   describe('getById', () => {
-    it('should return book with the book was funded', async () => {
+    it('should return book if the book exist', async () => {
       const { controller, newBookMock, bookMock, requestMock, responseMock } = makeSut()
       jest.spyOn(booksRepositoryMock, 'getById').mockResolvedValueOnce(bookMock)
 

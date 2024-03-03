@@ -47,7 +47,7 @@ describe('DeleteBooksController', ()=> {
     jest.clearAllMocks()
   })
 
-  it('should delete the book with the book exist', async () => {
+  it('should delete the book if the book exist', async () => {
     const { controller, newBookMock, bookMock, requestMock, responseMock } = makeSut()
     jest.spyOn(booksRepositoryMock, 'getById').mockResolvedValueOnce(bookMock)
     jest.spyOn(booksRepositoryMock, 'delete').mockResolvedValueOnce()
@@ -70,7 +70,7 @@ describe('DeleteBooksController', ()=> {
     await expect(promise).resolves.not.toThrow()
     expect(booksRepositoryMock.getById).toHaveBeenCalledWith(bookMock.id)
     expect(booksRepositoryMock.delete).not.toHaveBeenCalled()
-    expect(responseMock.statusCode).toEqual(409)
+    expect(responseMock.statusCode).toEqual(404)
   })
 
   it('should return 500 if some error occur', async () => {

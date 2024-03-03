@@ -47,7 +47,7 @@ describe('ReadBooksRentalController', ()=> {
   })
 
   describe('getById', () => {
-    it('should return book rental with the book was funded', async () => {
+    it('should return book rental if the rental was funded', async () => {
       const { controller, newBooksRentalMock, booksRentalMock, requestMock, responseMock } = makeSut()
       jest.spyOn(booksRentalRepositoryMock, 'getById').mockResolvedValueOnce(booksRentalMock)
 
@@ -58,7 +58,7 @@ describe('ReadBooksRentalController', ()=> {
       expect(responseMock.statusCode).toEqual(200)
     })
 
-    it('should return 204 with empty body if the book rental was not founded', async () => {
+    it('should return 204 with empty body if there is not book rental', async () => {
       const { controller, newBooksRentalMock, booksRentalMock, requestMock, responseMock } = makeSut()
       jest.spyOn(booksRentalRepositoryMock, 'getById').mockResolvedValueOnce(undefined)
 

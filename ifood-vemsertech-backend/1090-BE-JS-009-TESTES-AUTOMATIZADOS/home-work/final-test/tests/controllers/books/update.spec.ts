@@ -47,7 +47,7 @@ describe('UpdateBooksController', ()=> {
     jest.clearAllMocks()
   })
 
-  it('should update and return book if the book was funded', async () => {
+  it('should update and return book if the book exist', async () => {
     const { controller, bookMock, requestMock, responseMock } = makeSut()
     jest.spyOn(booksRepositoryMock, 'getById').mockResolvedValueOnce(bookMock)
     jest.spyOn(booksRepositoryMock, 'update').mockResolvedValueOnce()
@@ -60,6 +60,8 @@ describe('UpdateBooksController', ()=> {
   })
 
   it.todo('should return 404 statusCode and not update the book if there is no book with the id provided')
+
+  it.todo('should return 409 statusCode and not update the book if there is a book with the same title')
 
   it('should return 500 if some error occur', async () => {
     const { controller, newBookMock, bookMock, requestMock, responseMock } = makeSut()
