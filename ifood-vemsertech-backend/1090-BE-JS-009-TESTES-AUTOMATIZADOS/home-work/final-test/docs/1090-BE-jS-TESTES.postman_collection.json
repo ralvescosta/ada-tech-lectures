@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "263b4d49-d72a-4162-b480-a8eefec5a4a2",
+		"name": "1090-BE-jS-TESTES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29656914"
+	},
+	"item": [
+		{
+			"name": "Books - Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"{{$randomWords}}\",\n    \"subtitle\": \"{{$randomWords}}\",\n    \"publishing_company\": \"{{$randomCompanyName}}\",\n    \"published_at\": \"{{$isoTimestamp}}\",\n    \"authors\": \"authors\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/books",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books - GetByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/books/6de35865-9584-4c2e-bb30-65be53e62907",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"books",
+						"6de35865-9584-4c2e-bb30-65be53e62907"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books - GetAllBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/books",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books - Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"{{$randomWords}}\",\n    \"subtitle\": \"{{$randomWords}}\",\n    \"publishing_company\": \"{{$randomCompanyName}}\",\n    \"published_at\": \"{{$isoTimestamp}}\",\n    \"authors\": \"authors\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/books/6de35865-9584-4c2e-bb30-65be53e62907",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"books",
+						"6de35865-9584-4c2e-bb30-65be53e62907"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/books/6de35865-9584-4c2e-bb30-65be53e62907",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"books",
+						"6de35865-9584-4c2e-bb30-65be53e62907"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users - Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomFullName}}\",\n    \"email\": \"{{$randomEmail}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users - GetByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/users/1d4995fb-dd71-4f87-b2c2-0b888563ef25",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users",
+						"1d4995fb-dd71-4f87-b2c2-0b888563ef25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users - GetAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users - Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Person 1\",\n    \"email\": \"person@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/users/0c8c9fe0-f35f-4b0d-8570-0cb8f1238c5c",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"users",
+						"0c8c9fe0-f35f-4b0d-8570-0cb8f1238c5c"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksRental - Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"book_id\": \"7d5432cd-d831-4e3b-8b3a-3b6d35df0053\",\n    \"user_id\": \"1d4995fb-dd71-4f87-b2c2-0b888563ef25\",\n    \"rented_at\": \"{{$isoTimestamp}}\",\n    \"rental_time\": \"{{$randomDateFuture}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/rental/books",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"rental",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksRental - GetByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/rental/books/af322af1-084a-4496-805c-f4113886ad85",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"rental",
+						"books",
+						"af322af1-084a-4496-805c-f4113886ad85"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksRental - GetAllBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/rental/books",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"rental",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksRental - Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"book_id\": \"7d5432cd-d831-4e3b-8b3a-3b6d35df0053\",\n    \"user_id\": \"1d4995fb-dd71-4f87-b2c2-0b888563ef25\",\n    \"rented_at\": \"{{$isoTimestamp}}\",\n    \"rental_time\": \"{{$isoTimestamp}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/v1/rental/books/af322af1-084a-4496-805c-f4113886ad85",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"rental",
+						"books",
+						"af322af1-084a-4496-805c-f4113886ad85"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksRental - Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/v1/rental/books/af322af1-084a-4496-805c-f4113886ad85",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"v1",
+						"rental",
+						"books",
+						"af322af1-084a-4496-805c-f4113886ad85"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -43,6 +43,40 @@ No README.md do projeto voces encontraram as intrujões para poderem conseguir c
 
 ## Get started
 
+- Voce precisa previamente ter o NodeJs instalado na versão LTS
+  - [Versões NodeJs](https://nodejs.org/en/)
+- Voce precisa previamente ter configurado o WSL 2
+  - [Tutorial da Microsoft WSL 2](https://learn.microsoft.com/pt-br/windows/wsl/install)
+  - [Video tutorial WSL 2](https://www.youtube.com/watch?v=o1_E4PBl30s)
+- Voce precisa ter o yarn instalado
+  - Uma vez tendo o NodeJs devidamente instalado basta executar
+
+  ```bash
+    npm install -g yarn
+  ```
+- Voce precisa obter as dependências do projeto executando
+
+```bash
+yarn
+```
+
+- Para executar a API HTTP 
+
+```bash
+yarn start
+```
+
+- Para executar os tests unitários
+
+```bash
+yarn test
+```
+
+- Para executar os tests unitários em watch mode
+
+```bash
+yarn start --watch
+```
 
 ## HTTP API Endpoints
 
