@@ -16,13 +16,21 @@ export class UpdateBooksController {
     try {
       const book = await this.booksRepository.getById(id)
       if(!book){
-        res.status(409).json({ message: 'any book with the id provided was founded' })
+        res.status(404).json({ message: 'any book with the id provided was founded' })
         return
+      }
+
+      if(body.title && body.title !== book.title) {
+        const withTheSameTitle = await this.booksRepository.getByTitle(body.title)
+        if(withTheSameTitle) {
+          res.status(409).json({ message: 'there is already a book with the same title provided' })
+          return
+        }
       }
 
       await this.booksRepository.update(id, body)
 
-      res.status(200).json({...body, ...book})
+      res.status(200).json({...book, ...body,})
       return
     }catch(err){ 
       this.logger.error({ message: 'error to update book', error: err })
