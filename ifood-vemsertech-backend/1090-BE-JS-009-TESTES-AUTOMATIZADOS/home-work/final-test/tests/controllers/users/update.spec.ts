@@ -5,7 +5,7 @@ import { Book, NewBook } from '../../../src/controllers/models'
 import { fakerEN } from '@faker-js/faker'
 import { Request, Response } from 'express'
 
-describe('ReadBooksController', ()=> {
+describe('UpdateUsersController', ()=> {
   function makeSut() {
     const controller = new UpdateUsersController(logger, usersRepositoryMock)
     
