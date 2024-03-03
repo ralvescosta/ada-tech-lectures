@@ -21,9 +21,9 @@ No README.md do projeto voces encontraram as intrujões para poderem conseguir c
 - Implementar todos os testes que não foram implementados e estão indicados como Todo.
 - Implementar as seguintes novas funcionalidades utilizando TDD:
   
-  - Atualização de um aluguel de livros (UpdateBooksRentalController.update);
   - Consulta para obter todos os usuários cadastrados (ReadUsersController.list) - seguindo os requisitos [consultar lista de usuários](#get-v1users)
   - Atualizar os dados de um usuário (UpdateUsersController.update) - seguindo os requisitos [atualizar usuário](#put-v1usersid)
+  - Atualização de um aluguel de livros (UpdateBooksRentalController.update) - seguindo os requisitos [atualizar aluguel de livro](#put-v1rentalbooksid);
 
 **Critérios de avaliação:**
 
@@ -341,5 +341,165 @@ A resposta será um objeto JSON contendo os detalhes atualizados do usuário.
 <details>
 
 <summary>Books Rental Endpoints</summary>
+
+### POST /v1/rental/books
+
+**Criar um Novo Aluguel de Livro**
+
+Este endpoint permite registrar um novo aluguel de livro no sistema. Você deve fornecer os identificadores do livro e do usuário, além das datas de início do aluguel e do tempo estimado de aluguel.
+
+**Requisição HTTP**
+
+- Método: POST
+- URL: localhost:3000/v1/rental/books
+- Cabeçalhos:
+  - Content-Type: application/json
+
+**Payload**
+
+O corpo da requisição deve ser um objeto JSON contendo os seguintes campos:
+
+- book_id (string): O ID do livro sendo alugado.
+- user_id (string): O ID do usuário que está alugando o livro.
+- rented_at (string): A data e hora de início do aluguel no formato ISO 8601 (YYYY-MM-DDTHH:MM:SS.sssZ).
+- rental_time (string): A data e hora estimada para o fim do aluguel no formato ISO 8601 (YYYY-MM-DDTHH:MM:SS.sssZ).
+
+**Exemplo de Requisição**
+
+Para registrar um novo aluguel para o livro com ID 7d5432cd-d831-4e3b-8b3a-3b6d35df0053 pelo usuário com ID 1d4995fb-dd71-4f87-b2c2-0b888563ef25, com início em "2024-03-03T14:56:53.980Z" e tempo estimado de aluguel até "2024-03-10T14:56:53.980Z", utilize a seguinte requisição curl:
+
+```curl
+curl --location --request POST 'localhost:3000/v1/rental/books' \
+--header 'Content-Type: application/json' \
+--data '{
+    "book_id": "7d5432cd-d831-4e3b-8b3a-3b6d35df0053",
+    "user_id": "1d4995fb-dd71-4f87-b2c2-0b888563ef25",
+    "rented_at": "2024-03-03T14:56:53.980Z",
+    "rental_time": "2024-03-10T14:56:53.980Z"
+}'
+```
+
+**Resposta**
+
+A resposta será um objeto JSON contendo os detalhes do aluguel registrado, incluindo IDs de livro e usuário, datas de início e fim do aluguel.
+
+### GET /v1/rental/books/:id
+
+**Consultar Detalhes de um Aluguel de Livro Específico**
+
+Este endpoint permite consultar os detalhes de um aluguel de livro específico no sistema, utilizando seu identificador único (ID). Isso inclui informações sobre o livro alugado, o usuário que fez o aluguel, a data de início do aluguel e a data estimada de retorno.
+
+**Requisição HTTP**
+
+- Método: GET
+- URL: localhost:3000/v1/rental/books/{id}
+  - Substitua {id} pelo ID único do aluguel de livro que deseja consultar.
+- Cabeçalhos
+  - Não são necessários cabeçalhos específicos para esta requisição.
+
+**Exemplo de Requisição**
+
+Para consultar os detalhes do aluguel de livro com o ID af322af1-084a-4496-805c-f4113886ad85, utilize a seguinte requisição curl:
+
+```curl
+curl --location --request GET 'localhost:3000/v1/rental/books/af322af1-084a-4496-805c-f4113886ad85'
+```
+
+**Resposta**
+
+A resposta será um objeto JSON contendo detalhes do aluguel, incluindo o ID do livro, o ID do usuário, a data de início do aluguel e a data estimada de retorno.
+
+### GET /v1/rental/books
+
+**Consultar Lista de Aluguéis de Livros**
+
+Este endpoint permite consultar a lista completa de aluguéis de livros registrados no sistema. Você pode usar este endpoint para obter uma visão geral de todos os aluguéis ativos e concluídos.
+
+**Requisição HTTP**
+
+- Método: GET
+- URL: localhost:3000/v1/rental/books
+- Cabeçalhos
+  - Não são necessários cabeçalhos específicos para esta requisição.
+
+**Exemplo de Requisição**
+
+Para consultar a lista completa de aluguéis de livros, utilize a seguinte requisição curl:
+
+```curl
+curl --location --request GET 'localhost:3000/v1/rental/books'
+```
+
+**Resposta**
+
+A resposta será um array de objetos JSON, cada um contendo detalhes de um aluguel específico, incluindo o ID do livro, o ID do usuário, a data de início do aluguel e a data estimada de retorno.
+
+### PUT /v1/rental/books/:id
+
+**Atualizar Registro de Aluguel de Livro**
+
+Este endpoint permite atualizar as informações de um registro de aluguel de livro existente no sistema, utilizando seu identificador único (ID). Isso pode incluir a atualização do livro alugado, do usuário que fez o aluguel, da data de início do aluguel e da estimativa de tempo de aluguel.
+
+**Requisição HTTP**
+
+- Método: PUT
+- URL: localhost:3000/v1/rental/books/{id}
+  - Substitua {id} pelo ID único do registro de aluguel de livro que deseja atualizar.
+- Cabeçalhos
+  - Content-Type: application/json
+
+**Payload**
+
+O corpo da requisição deve ser um objeto JSON contendo os seguintes campos para atualização:
+
+- book_id (string): O ID atualizado do livro sendo alugado.
+- user_id (string): O ID atualizado do usuário que está alugando o livro.
+- rented_at (string): A data e hora atualizadas de início do aluguel, no formato ISO 8601 (YYYY-MM-DDTHH:MM:SS.sssZ).
+- rental_time (string): A data e hora atualizadas que representam a nova estimativa de tempo de aluguel, também no formato ISO 8601.
+
+**Exemplo de Requisição**
+
+Para atualizar um registro de aluguel de livro com ID af322af1-084a-4496-805c-f4113886ad85, alterando o livro, o usuário, e as datas de início e estimativa de fim do aluguel, utilize a seguinte requisição curl:
+
+```curl
+curl --location --request PUT 'localhost:3000/v1/rental/books/af322af1-084a-4496-805c-f4113886ad85' \
+--header 'Content-Type: application/json' \
+--data '{
+    "book_id": "7d5432cd-d831-4e3b-8b3a-3b6d35df0053",
+    "user_id": "1d4995fb-dd71-4f87-b2c2-0b888563ef25",
+    "rented_at": "2024-03-03T15:05:25.596Z",
+    "rental_time": "2024-03-03T15:05:25.596Z"
+}'
+```
+
+**Resposta**
+
+A resposta será um objeto JSON contendo os detalhes atualizados do registro de aluguel de livro.
+
+### DELETE /v1/rental/books/:id
+
+**Excluir Registro de Aluguel de Livro**
+
+Este endpoint permite excluir um registro de aluguel de livro específico do sistema, utilizando seu identificador único (ID). Esta ação é irreversível e deve ser usada com cautela.
+
+**Requisição HTTP**
+
+- Método: DELETE
+- URL: localhost:3000/v1/rental/books/{id}
+  - Substitua {id} pelo ID único do registro de aluguel de livro que deseja excluir.
+- Cabeçalhos
+  - Não são necessários cabeçalhos específicos para esta requisição.
+
+**Exemplo de Requisição**
+
+Para excluir o registro de aluguel de livro com o ID af322af1-084a-4496-805c-f4113886ad85, utilize a seguinte requisição curl:
+
+```curl
+curl --location --request DELETE 'localhost:3000/v1/rental/books/af322af1-084a-4496-805c-f4113886ad85'
+```
+
+**Resposta**
+
+A resposta geralmente será um código de status HTTP indicando sucesso (como 200 OK ou 204 No Content) sem corpo de resposta, confirmando que o registro de aluguel de livro foi excluído com sucesso.
 
 </details>
