@@ -22,8 +22,8 @@ No README.md do projeto voces encontraram as intrujões para poderem conseguir c
 - Implementar as seguintes novas funcionalidades utilizando TDD:
   
   - Atualização de um aluguel de livros (UpdateBooksRentalController.update);
-  - Consulta para obter todos os usuários cadastrados (ReadUsersController.list)
-  - Atualizar os dados de um usuário (UpdateUsersController.update)
+  - Consulta para obter todos os usuários cadastrados (ReadUsersController.list) - seguindo os requisitos [consultar lista de usuários](#get-v1users)
+  - Atualizar os dados de um usuário (UpdateUsersController.update) - seguindo os requisitos [atualizar usuário](#put-v1usersid)
 
 **Critérios de avaliação:**
 
@@ -297,7 +297,7 @@ curl --location --request GET 'localhost:3000/v1/users'
 
 A resposta será um array de objetos JSON, cada um contendo detalhes de um usuário específico, incluindo ID, nome e endereço de e-mail.
 
-### UPDATE /v1/users/:id
+### PUT /v1/users/:id
 
 **Atualizar Detalhes de um Usuário Específico**
 
