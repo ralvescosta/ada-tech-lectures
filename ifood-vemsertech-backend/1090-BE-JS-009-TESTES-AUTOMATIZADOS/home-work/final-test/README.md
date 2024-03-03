@@ -210,6 +210,131 @@ curl --location --request DELETE 'localhost:3000/v1/books/6de35865-9584-4c2e-bb3
 
 <summary>Users Endpoints</summary>
 
+### POST /v1/users
+
+**Criar um Novo Usuário**
+
+Este endpoint permite criar um novo usuário no sistema. Você deve fornecer detalhes sobre o usuário, incluindo seu nome e e-mail.
+
+**Requisição HTTP**
+
+- Método: POST
+- URL: localhost:3000/v1/users
+- Cabeçalhos:
+  - Content-Type: application/json
+
+**Payload**
+
+O corpo da requisição deve ser um objeto JSON contendo os seguintes campos:
+
+- name (string): O nome completo do usuário.
+- email (string): O endereço de e-mail do usuário.
+
+**Exemplo de Requisição**
+
+Para criar um novo usuário com o nome "Rudolph Gibson" e o e-mail "Carmela10@gmail.com", utilize a seguinte requisição curl:
+
+```curl
+curl --location --request POST 'localhost:3000/v1/users' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Rudolph Gibson",
+    "email": "Carmela10@gmail.com"
+}'
+```
+
+**Resposta**
+
+A resposta será um objeto JSON contendo os detalhes do usuário recém-criado, incluindo um ID único gerado pelo sistema, nome e e-mail.
+
+### GET /v1/users/:id
+
+**Consultar Detalhes de um Usuário Específico**
+
+Este endpoint permite consultar os detalhes de um usuário específico no sistema utilizando seu identificador único (ID).
+
+**Requisição HTTP**
+
+- Método: GET
+- URL: localhost:3000/v1/users/{id}
+  - Substitua {id} pelo ID único do usuário que deseja consultar.
+- Cabeçalhos
+  - Não são necessários cabeçalhos específicos para esta requisição.
+
+**Exemplo de Requisição**
+
+Para consultar os detalhes do usuário com o ID 1d4995fb-dd71-4f87-b2c2-0b888563ef25, utilize a seguinte requisição curl:
+
+```curl
+curl --location --request GET 'localhost:3000/v1/users/1d4995fb-dd71-4f87-b2c2-0b888563ef25'
+```
+
+**Resposta**
+
+A resposta será um objeto JSON contendo detalhes do usuário, incluindo ID, nome e endereço de e-mail.
+
+### GET /v1/users
+
+**Consultar Lista de Usuários**
+
+Este endpoint permite consultar a lista completa de usuários registrados no sistema. Você pode usar este endpoint para obter uma visão geral de todos os usuários.
+
+- Requisição HTTP
+- Método: GET
+- URL: localhost:3000/v1/users
+- Cabeçalhos
+  - Não são necessários cabeçalhos específicos para esta requisição.
+
+**Exemplo de Requisição**
+
+Para consultar a lista completa de usuários, utilize a seguinte requisição curl:
+
+```curl
+curl --location --request GET 'localhost:3000/v1/users'
+```
+
+**Resposta**
+
+A resposta será um array de objetos JSON, cada um contendo detalhes de um usuário específico, incluindo ID, nome e endereço de e-mail.
+
+### UPDATE /v1/users/:id
+
+**Atualizar Detalhes de um Usuário Específico**
+
+Este endpoint permite atualizar os detalhes de um usuário específico no sistema utilizando seu identificador único (ID). Você pode modificar o nome e o e-mail do usuário.
+
+**Requisição HTTP**
+
+- Método: PUT
+- URL: localhost:3000/v1/users/{id}
+  - Substitua {id} pelo ID único do usuário que deseja atualizar.
+- Cabeçalhos
+  - Content-Type: application/json
+
+**Payload**
+
+O corpo da requisição deve ser um objeto JSON contendo os campos que deseja atualizar:
+
+- name (string): O novo nome do usuário.
+- email (string): O novo endereço de e-mail do usuário.
+
+**Exemplo de Requisição**
+
+Para atualizar os detalhes do usuário com o ID 0c8c9fe0-f35f-4b0d-8570-0cb8f1238c5c, utilize a seguinte requisição curl:
+
+```curl
+curl --location --request PUT 'localhost:3000/v1/users/0c8c9fe0-f35f-4b0d-8570-0cb8f1238c5c' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Person 1",
+    "email": "person@email.com"
+}'
+```
+
+**Resposta**
+
+A resposta será um objeto JSON contendo os detalhes atualizados do usuário.
+
 </details>
 
 

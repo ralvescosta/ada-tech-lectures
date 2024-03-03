@@ -28,6 +28,6 @@ export class ReadUsersController {
   }
 
   public async list(req: Request, res: Response): Promise<void> {
-    res.status(200).send()
+    res.status(501).send({ message: 'not implemented yet!' })
   }
 }

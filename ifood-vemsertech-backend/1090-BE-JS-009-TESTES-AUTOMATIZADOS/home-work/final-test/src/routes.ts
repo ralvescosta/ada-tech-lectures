@@ -38,6 +38,7 @@ export const Routes = (args: Args) => {
 
   routes.post('/v1/users', args.createUsersController.create.bind(args.createUsersController))
   routes.get('/v1/users/:id', args.readUsersController.getById.bind(args.readUsersController))
+  routes.get('/v1/users', args.readUsersController.list.bind(args.readUsersController))
   routes.put('/v1/users/:id', args.updateUsersController.update.bind(args.updateUsersController))
 
   routes.post('/v1/rental/books', args.createBooksRentalController.create.bind(args.createBooksRentalController))
