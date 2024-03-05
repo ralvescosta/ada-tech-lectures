@@ -1,33 +1,17 @@
 import { CreateCarsController } from '../../src/controllers/create_cars_controller'
 import { Request } from 'express'
-import { Cars, NewCar } from '../../src/models/cars'
-import { ICarsRepository } from '../../src/controllers/interfaces'
+import { NewCar } from '../../src/models/cars'
+import { carsRepositoryMock } from '../mocks/cars_repository'
+import { responseMock, requestMock } from '../mocks/request'
 
 describe('CreateCarsController', () => {
   function sut() {
-    const carsRepository: ICarsRepository = {
-      create: (newCar: NewCar): Promise<Cars> => {
-        return jest.fn as any
-      },
-
-      findByName: (name: string): Promise<Cars | undefined> => {
-        return jest.fn as any
-      }
-    }
-    const controller = new CreateCarsController(carsRepository)
+    const controller = new CreateCarsController(carsRepositoryMock)
     const newCar: NewCar = { name: 'name', model: 'my-model', year: new Date() }
-    const request = { body: newCar } as Request
-    const response: any = {
-      statusCode: 0,
-      status: (status: number) => {
-        response.statusCode = status
-        return {
-          json: jest.fn()
-        }
-      },
-    }
+    const request = responseMock
+    request.body = newCar
 
-    return { carsRepository, controller, newCar, request, response }
+    return { carsRepositoryMock, controller, newCar, request }
   }
 
   beforeEach(() => {
@@ -36,46 +20,46 @@ describe('CreateCarsController', () => {
   
   it('should create a new car if there is no other car with the same name', async () => {
     //arrange
-    const { carsRepository, controller, newCar, request, response  } = sut()
-    jest.spyOn(carsRepository, 'findByName').mockResolvedValueOnce(undefined)
-    jest.spyOn(carsRepository, 'create').mockResolvedValueOnce({ id: 'id', ...newCar })
+    const { carsRepositoryMock, controller, newCar, request  } = sut()
+    jest.spyOn(carsRepositoryMock, 'findByName').mockResolvedValueOnce(undefined)
+    jest.spyOn(carsRepositoryMock, 'create').mockResolvedValueOnce({ id: 'id', ...newCar })
 
     //act
-    const promise = controller.create(request, response)
+    const promise = controller.create(request, responseMock)
 
     //assert
     await expect(promise).resolves.not.toThrow()
-    expect(carsRepository.findByName).toHaveBeenCalledWith(newCar.name)
-    expect(response.statusCode).toEqual(201)
+    expect(carsRepositoryMock.findByName).toHaveBeenCalledWith(newCar.name)
+    expect(responseMock.statusCode).toEqual(201)
   })
 
   it('should failure if there is a car with the same name', async() => {
     //arrange
-    const { carsRepository, controller, newCar, request, response  } = sut()
-    jest.spyOn(carsRepository, 'findByName').mockResolvedValueOnce({ id: 'id', ...newCar })
-    jest.spyOn(carsRepository, 'create')
+    const { carsRepositoryMock, controller, newCar, request  } = sut()
+    jest.spyOn(carsRepositoryMock, 'findByName').mockResolvedValueOnce({ id: 'id', ...newCar })
+    jest.spyOn(carsRepositoryMock, 'create')
 
     //act
-    const promise = controller.create(request, response)
+    const promise = controller.create(request, responseMock)
 
     //assert
     await expect(promise).resolves.not.toThrow()
-    expect(carsRepository.create).not.toHaveBeenCalled()
-    expect(response.statusCode).toEqual(409)
+    expect(carsRepositoryMock.create).not.toHaveBeenCalled()
+    expect(responseMock.statusCode).toEqual(409)
   })
 
   it('should return statusCode 500 repository throw an error', async() => {
     //arrange
-    const { carsRepository, controller, request, response  } = sut()
-    jest.spyOn(carsRepository, 'findByName').mockRejectedValueOnce(new Error('internal error'))
-    jest.spyOn(carsRepository, 'create')
+    const { carsRepositoryMock, controller, request  } = sut()
+    jest.spyOn(carsRepositoryMock, 'findByName').mockRejectedValueOnce(new Error('internal error'))
+    jest.spyOn(carsRepositoryMock, 'create')
 
     //act
-    const promise = controller.create(request, response)
+    const promise = controller.create(request, responseMock)
 
     //assert
     await expect(promise).resolves.not.toThrow()
-    expect(carsRepository.create).not.toHaveBeenCalled()
-    expect(response.statusCode).toEqual(500)
+    expect(carsRepositoryMock.create).not.toHaveBeenCalled()
+    expect(responseMock.statusCode).toEqual(500)
   })
 })

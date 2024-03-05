@@ -1,6 +1,5 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../sequelize";
-import { BooksRentalModel } from "./BooksRental";
 import { User } from "../../controllers/models";
 
 class UsersModel extends Model<User> {}

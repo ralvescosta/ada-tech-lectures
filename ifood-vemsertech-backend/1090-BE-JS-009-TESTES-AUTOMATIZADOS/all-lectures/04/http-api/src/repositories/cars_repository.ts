@@ -18,4 +18,13 @@ export class CarsRepository implements ICarsRepository {
     const car = await CarsModel.create({ id, ...newCar })
     return car.dataValues
   }
+
+  public async findById(id: string): Promise<Cars | undefined> {
+    const car = await CarsModel.findOne({ where: { id } })
+    if(!car) {
+      return undefined
+    }
+ 
+    return car.dataValues
+  }
 }
