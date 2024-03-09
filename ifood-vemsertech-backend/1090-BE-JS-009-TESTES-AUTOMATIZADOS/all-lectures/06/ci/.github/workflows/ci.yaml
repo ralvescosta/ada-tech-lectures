@@ -1,0 +1,30 @@
+name: my-first-ci
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonando repositorio
+        uses: actions/checkout@v2
+
+      - name: Node Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install modules
+        run: yarn install
+
+      - name: Run unit tests
+        run: yarn test:unit
+
+      - name: Run coverage
+        run: yarn test:unit --coverage
