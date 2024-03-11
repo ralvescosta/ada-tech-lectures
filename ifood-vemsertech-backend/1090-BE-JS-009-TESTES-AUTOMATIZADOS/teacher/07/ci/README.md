@@ -107,3 +107,15 @@ usermod -aG docker jenkins
 ``` bash
 sudo systemctl restart jenkins
 ```
+
+## Jenkins Bash Script
+
+```bash
+echo "Starting deploy...\n" && \
+echo "Pulling the container image from dockerhub...\n" && \
+docker pull rafaelbodao/adatech-1090 && \
+echo "Removing oldest container...\n"
+docker rm -f api && \
+echo "Running the new image" && \
+docker run -p 3000:3000 --name api -d rafaelbodao/adatech-1090
+```
