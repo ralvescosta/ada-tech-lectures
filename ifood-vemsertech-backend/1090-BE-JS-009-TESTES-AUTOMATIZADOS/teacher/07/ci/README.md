@@ -1,5 +1,21 @@
 # adatech-1090
 
+- SonarCloud
+- Explain about Container
+- Create Dockerfile's
+- Dockerhub
+- GithubAction build step
+- Explain about Jenkins
+- Explain about AWS
+- EC2
+- Installations
+- EC2 Firewall Configuration
+- Create basic Jenkins script
+- GithubAction CD
+- Improve Jenkins script to deploy
+- Run the GithubAction
+
+
 ## Docker Installation
 - Reference:
 
