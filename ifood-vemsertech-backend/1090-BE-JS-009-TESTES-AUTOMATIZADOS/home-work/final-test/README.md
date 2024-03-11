@@ -36,10 +36,8 @@ No README.md do projeto voces encontraram as intrujões para poderem conseguir c
 **Sobre a entrega:**
 
 - Prazo máximo até dia 14/03/2024 às 23:59:59
-- Deve ser enviado para o email the.ralvescosta@gmail.com o link do repository publico, seguindo as instruções:
-
-  - **Assunto do email:** AdaTech - Turma 1090 - Trabalho Final - NUMERO_DO_GRUPO
-  - **No conteúdo do email:** Adicionar o nome de todos os integrantes do grupo
+- O trabalho sera em grupo de 2 a 5 integrantes
+- Cada integrante do grupo deve realizar a entrega do trabalho no LMS no item "Projeto Final"
 
 ## Get started
 
